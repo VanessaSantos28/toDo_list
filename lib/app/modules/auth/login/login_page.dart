@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
@@ -75,7 +75,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          SizedBox(height: 30),
+                          const SizedBox(height: 30),
                           SignInButton(
                             Buttons.Google,
                             text: 'Continue com o Google',
@@ -90,7 +90,9 @@ class LoginPage extends StatelessWidget {
                             children: [
                               Text('Não tem conta?'),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).pushNamed('/register');
+                                },
                                 child: Text('Cadastre-se'),
                               ),
                             ],
