@@ -14,7 +14,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "840217283122-ovra9f61hlmnf4mgp29t495brnm4pktj.apps.googleusercontent.com",
+          "client_id": "840217283122-mqkb4j77uh57lurakqg0ruvj5jakn65i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.academiadoflutter.todo_list_provider",
+            "certificate_hash": "2cfe988d38ab76a75d772a1a97220c3fa22d9f16"
+          }
+        },
+        {
+          "client_id": "840217283122-re4snapeok664lf9t1k3eflp3sq3h8a2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
