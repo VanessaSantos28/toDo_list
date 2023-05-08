@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:todo_list_provider/app/exception/auth_exception.dart';
 import './user_repository.dart';
 
@@ -76,6 +77,59 @@ class UserRepositoryImpl implements UserRepository {
       print(e);
       print(s);
       throw AuthException(message: 'Erro ao resetar senha');
+    }
+  }
+
+  @override
+  Future<User?> googleLogin() async {
+    List<String>? loginMethods;
+    try {
+      final googleSignIn = GoogleSignIn();
+      final googleUser = await googleSignIn.signIn();
+      if (googleUser != null) {
+        loginMethods =
+            await _firebaseAuth.fetchSignInMethodsForEmail(googleUser.email);
+        if (loginMethods.contains('password')) {
+          throw AuthException(
+              message:
+                  'Você utilizou o e-mail para cadastro no TodoList, caso tenha esquecido sua senha, por favor, clique na opção esqueci minha senha');
+        } else {
+          final googleAuth = await googleUser.authentication;
+          final firebaseCredential = GoogleAuthProvider.credential(
+              accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+          var userCredencial =
+              await _firebaseAuth.signInWithCredential(firebaseCredential);
+          return userCredencial.user;
+        }
+      }
+    } on FirebaseAuthException catch (e, s) {
+      print(e);
+      print(s);
+      if (e.code == 'account-exist-with-different-credential') {
+        throw AuthException(
+            message:
+                '''
+         Login inválido você se registrou no TodoList com os seguintes provedores: 
+        ${loginMethods?.join(',')}
+        ''');
+      } else {
+        throw AuthException(message: 'Erro ao realizar o login');
+      }
+    }
+  }
+
+  @override
+  Future<void> googleLogout() async {
+    await GoogleSignIn().signOut();
+    _firebaseAuth.signOut();
+  }
+
+  @override
+  Future<void> updateDisplayName(String name) async {
+    final user = _firebaseAuth.currentUser;
+    if (user != null) {
+      await user.updateDisplayName(name);
+      user.reload();
     }
   }
 }

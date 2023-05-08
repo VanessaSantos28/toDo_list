@@ -59,110 +59,112 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Todo List',
-              style: TextStyle(fontSize: 10, color: context.primaryColor),
-            ),
-            Text(
-              'Cadastro',
-              style: TextStyle(fontSize: 15, color: context.primaryColor),
-            )
-          ],
-        ),
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: ClipOval(
-            child: Container(
-              color: context.primaryColor.withAlpha(20),
-              padding: const EdgeInsets.all(8),
-              child: Icon(Icons.arrow_back_ios_outlined,
-                  size: 20, color: context.primaryColor),
-            ),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Todo List',
+                style: TextStyle(fontSize: 10, color: context.primaryColor),
+              ),
+              Text(
+                'Cadastro',
+                style: TextStyle(fontSize: 15, color: context.primaryColor),
+              )
+            ],
           ),
-        ),
-      ),
-      body: ListView(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.width * .5,
-            child: const FittedBox(
-              fit: BoxFit.fitHeight,
-              child: Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: TodoListLogo(),
+          leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: ClipOval(
+              child: Container(
+                color: context.primaryColor.withAlpha(20),
+                padding: const EdgeInsets.all(8),
+                child: Icon(Icons.arrow_back_ios_outlined,
+                    size: 20, color: context.primaryColor),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-            child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TodoListField(
-                        label: 'E-mail',
-                        controller: _emailEC,
+        ),
+        body: ListView(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.width * .5,
+              child: const FittedBox(
+                fit: BoxFit.fitHeight,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: TodoListLogo(),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+              child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TodoListField(
+                          label: 'E-mail',
+                          controller: _emailEC,
+                          validator: Validatorless.multiple([
+                            Validatorless.required('E-mail obrigatório'),
+                            Validatorless.email('E-mail inválido'),
+                          ])),
+                      const SizedBox(height: 20),
+                      TodoListField(
+                        label: 'Senha',
+                        controller: _passwordEC,
+                        obscureText: true,
                         validator: Validatorless.multiple([
-                          Validatorless.required('E-mail obrigatório'),
-                          Validatorless.email('E-mail inválido'),
-                        ])),
-                    const SizedBox(height: 20),
-                    TodoListField(
-                      label: 'Senha',
-                      controller: _passwordEC,
-                      obscureText: true,
-                      validator: Validatorless.multiple([
-                        Validatorless.required('Senha obrigatório'),
-                        Validatorless.min(
-                            6, 'Senha deve ter pelo menos 6 caracteres'),
-                      ]),
-                    ),
-                    const SizedBox(height: 20),
-                    TodoListField(
-                      label: 'Confirma Senha',
-                      controller: _confirmPasswordEC,
-                      obscureText: true,
-                      validator: Validatorless.multiple([
-                        Validatorless.required('Confirma senha obrigatório'),
-                        Validatorless.compare(
-                            _passwordEC, 'Senha diferente de confirma senha')
-                      ]),
-                    ),
-                    const SizedBox(height: 20),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          final formValid =
-                              _formKey.currentState?.validate() ?? false;
-                          if (formValid) {
-                            var email = _emailEC.text;
-                            var password = _passwordEC.text;
-                            context
-                                .read<RegisterController>()
-                                .registerUser(email, password);
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20))),
-                        child: const Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Text('Salvar'),
+                          Validatorless.required('Senha obrigatório'),
+                          Validatorless.min(
+                              6, 'Senha deve ter pelo menos 6 caracteres'),
+                        ]),
+                      ),
+                      const SizedBox(height: 20),
+                      TodoListField(
+                        label: 'Confirma Senha',
+                        controller: _confirmPasswordEC,
+                        obscureText: true,
+                        validator: Validatorless.multiple([
+                          Validatorless.required('Confirma senha obrigatório'),
+                          Validatorless.compare(
+                              _passwordEC, 'Senha diferente de confirma senha')
+                        ]),
+                      ),
+                      const SizedBox(height: 20),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            final formValid =
+                                _formKey.currentState?.validate() ?? false;
+                            if (formValid) {
+                              var email = _emailEC.text;
+                              var password = _passwordEC.text;
+                              context
+                                  .read<RegisterController>()
+                                  .registerUser(email, password);
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20))),
+                          child: const Padding(
+                            padding: EdgeInsets.all(10),
+                            child: Text('Salvar'),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                )),
-          )
-        ],
+                    ],
+                  )),
+            )
+          ],
+        ),
       ),
     );
   }
