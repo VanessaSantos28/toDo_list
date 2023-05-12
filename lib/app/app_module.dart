@@ -33,7 +33,7 @@ class AppModule extends StatelessWidget {
               ..loadListener(),
             lazy: false)
       ],
-      child: AppWidget(),
+      child: const AppWidget(),
     );
   }
 }

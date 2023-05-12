@@ -37,7 +37,7 @@ class _TodoCardFilterState extends State<TodoCardFilter> {
             style: TextStyle(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           LinearProgressIndicator(

@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
               }
             },
             sucessCallback: (notifier, listenerInstance) {
-              print('Login efetuado com sucesso');
+              debugPrint('Login efetuado com sucesso');
             });
   }
 
@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SizedBox(height: 40),
-                  TodoListLogo(),
+                  const TodoListLogo(),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 20),
@@ -96,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                                         'Digite um e-mail para recuperar a senha');
                                   }
                                 },
-                                child: Text('Esqueceu sua senha?'),
+                                child: const Text('Esqueceu sua senha?'),
                               ),
                               ElevatedButton(
                                 onPressed: () {
@@ -111,8 +111,8 @@ class _LoginPageState extends State<LoginPage> {
                                         .login(email, password);
                                   }
                                 },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10),
                                   child: Text('Login'),
                                 ),
                                 style: ElevatedButton.styleFrom(
@@ -130,7 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xffF0F3F7),
+                        color: const Color(0xffF0F3F7),
                         border: Border(
                           top: BorderSide(
                             width: 2,
@@ -155,12 +155,12 @@ class _LoginPageState extends State<LoginPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('Não tem conta?'),
+                              const Text('Não tem conta?'),
                               TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pushNamed('/register');
                                 },
-                                child: Text('Cadastre-se'),
+                                child: const Text('Cadastre-se'),
                               ),
                             ],
                           ),

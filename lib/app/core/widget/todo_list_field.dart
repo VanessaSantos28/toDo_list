@@ -34,16 +34,16 @@ class TodoListField extends StatelessWidget {
           focusNode: focusNode,
           decoration: InputDecoration(
             labelText: label,
-            labelStyle: TextStyle(fontSize: 15, color: Colors.black),
+            labelStyle: const TextStyle(fontSize: 15, color: Colors.black),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
-              borderSide: BorderSide(color: Colors.red),
+              borderSide: const BorderSide(color: Colors.red),
             ),
             isDense: true,
-            suffixIcon: this.sufffixIconButton ??
+            suffixIcon: sufffixIconButton ??
                 (obscureText == true
                     ? IconButton(
                         onPressed: () {

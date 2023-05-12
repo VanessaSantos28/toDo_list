@@ -7,6 +7,6 @@ class HomeModule extends TodoListModule {
       : super(
             // bindings: null,
             routers: {
-              '/home': (context) => HomePage(),
+              '/home': (context) => const HomePage(),
             });
 }

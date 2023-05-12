@@ -52,14 +52,14 @@ class HomeDrawer extends StatelessWidget {
                   context: context,
                   builder: (_) {
                     return AlertDialog(
-                      title: Text('Alterar Nome'),
+                      title: const Text('Alterar Nome'),
                       content: TextField(
                         onChanged: (value) => nameVN.value = value,
                       ),
                       actions: [
                         TextButton(
                             onPressed: () => Navigator.of(context).pop(),
-                            child: Text(
+                            child: const Text(
                               'Cancelar',
                               style: TextStyle(color: Colors.red),
                             )),
@@ -76,16 +76,16 @@ class HomeDrawer extends StatelessWidget {
                                 Navigator.of(context).pop();
                               }
                             },
-                            child: Text('Alterar')),
+                            child: const Text('Alterar')),
                       ],
                     );
                   });
             },
-            title: Text('Alterar Nome'),
+            title: const Text('Alterar Nome'),
           ),
           ListTile(
             onTap: () => context.read<AuthProvider>().logout(),
-            title: Text('Sair'),
+            title: const Text('Sair'),
           ),
         ],
       ),

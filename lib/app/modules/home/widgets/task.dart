@@ -9,10 +9,10 @@ class Task extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(color: Color.fromARGB(255, 77, 77, 77)),
           ]),
-      margin: EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       child: IntrinsicHeight(
         child: ListTile(
           contentPadding: const EdgeInsets.all(8),
@@ -20,16 +20,18 @@ class Task extends StatelessWidget {
           title: const Text(
             'Descrição da TASK',
             style: TextStyle(
-                decoration: false ? TextDecoration.lineThrough : null),
+                // decoration: false ? TextDecoration.lineThrough : null
+                ),
           ),
-          subtitle: Text(
+          subtitle: const Text(
             '08/05/2023',
             style: TextStyle(
-                decoration: false ? TextDecoration.lineThrough : null),
+                // decoration: false ? TextDecoration.lineThrough : null
+                ),
           ),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
-              side: BorderSide(width: 1)),
+              side: const BorderSide(width: 1)),
         ),
       ),
     );

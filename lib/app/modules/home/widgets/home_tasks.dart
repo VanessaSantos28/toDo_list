@@ -11,12 +11,12 @@ class HomeTasks extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text('TASK\'S DE HOJE', style: context.titleStyle),
           Column(
-            children: [
+            children: const [
               Task(),
               Task(),
               Task(),

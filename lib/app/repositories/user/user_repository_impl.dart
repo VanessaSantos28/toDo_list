@@ -6,7 +6,7 @@ import 'package:todo_list_provider/app/exception/auth_exception.dart';
 import './user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
-  FirebaseAuth _firebaseAuth;
+  final FirebaseAuth _firebaseAuth;
 
   UserRepositoryImpl({
     required FirebaseAuth firebaseAuth,
@@ -116,6 +116,7 @@ class UserRepositoryImpl implements UserRepository {
         throw AuthException(message: 'Erro ao realizar o login');
       }
     }
+    return null;
   }
 
   @override
