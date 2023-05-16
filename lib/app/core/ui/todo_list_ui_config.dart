@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:todo_list_provider/app/core/ui/theme_extensions.dart';
 
 class TodoListUiConfig {
   TodoListUiConfig._();

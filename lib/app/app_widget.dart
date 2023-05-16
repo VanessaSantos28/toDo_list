@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:todo_list_provider/app/core/database/sqlite_adm_connection.dart';
 import 'package:todo_list_provider/app/core/navigator/todo_list_navigator.dart';
 import 'package:todo_list_provider/app/core/ui/todo_list_ui_config.dart';
@@ -37,6 +37,14 @@ class _AppWidgetState extends State<AppWidget> {
       title: 'Todo List Provider',
       theme: TodoListUiConfig.theme,
       navigatorKey: TodoListNavigator.navigatorKey,
+      localizationsDelegates: [
+        GlobalCupertinoLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: [
+        Locale('pt', 'BR'),
+      ],
       routes: {
         ...AuthModule().routers,
         ...HomeModule().routers,

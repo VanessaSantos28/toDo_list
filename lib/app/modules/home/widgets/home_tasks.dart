@@ -16,7 +16,7 @@ class HomeTasks extends StatelessWidget {
           ),
           Text('TASK\'S DE HOJE', style: context.titleStyle),
           Column(
-            children: const [
+            children: [
               Task(),
               Task(),
               Task(),
