@@ -1,7 +1,6 @@
 <p align="center"> 
 <img src=".github/toDoList.png" alt="Demonstração do projeto" width="100%" />
 <img src=".github/cadastro.png" alt="Demonstração do projeto" width="100%" />
-<img src=".github/gmail.png" alt="Demonstração do projeto" width="100%" />
 <img src=".github/login.png" alt="Demonstração do projeto" width="100%" />
 </p>
 
